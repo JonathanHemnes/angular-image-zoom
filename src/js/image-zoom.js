@@ -10,7 +10,7 @@
 /*global angular*/
 var ImageZoom = angular.module('ImageZoom', [])
   .constant('ImageZoomDefaultConfig', {
-    templateUrl: 'image-zoom.html',
+    templateUrl: '/templates/image-zoom.html',
     zoomFactor: 1.5,
     backgroundColor: 'transparent'
   })
@@ -31,6 +31,7 @@ var ImageZoom = angular.module('ImageZoom', [])
         },
         scope: {
           imageSrc: '@',
+          zoomImgSrc: '@',
           zoomFactor: '=?',
           maxHeight: '=?',
           maxWidth: '=?',
@@ -221,7 +222,7 @@ var ImageZoom = angular.module('ImageZoom', [])
                 nHeight = img.height;
                 isImageLoading = false;
               };
-              img.src = $scope.imageSrc;
+              img.src = $scope.zoomImgSrc ? $scope.zoomImgSrc : $scope.imageSrc;
               isImageLoading = true;
             } else {
               return getLensBgStyle(evt);
